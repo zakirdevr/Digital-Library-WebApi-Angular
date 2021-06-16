@@ -1,0 +1,64 @@
+<div class="container my-5">
+<h2 class="text-center alert alert-danger">Digital Library Web Api | Angular</h2>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="container">
+      <h4 class="text-center alert alert-info">{{heading}}</h4>
+        <form [formGroup]="bookForm" (ngSubmit)="OnSubmit()">
+            <div class="mb-3">
+              <label for="exampleInputEmail1"  class="form-label">Title</label>
+              <input type="text" class="form-control" formControlName="title" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Description</label>
+              <input type="text" class="form-control" formControlName="description" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Author</label>
+              <input type="text" class="form-control" formControlName="author" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Total Pages</label>
+              <input type="number" class="form-control" formControlName="totalPage" id="exampleInputPassword1">
+            </div>
+            <button type="submit" class="btn btn-primary">{{btnSave}}</button>
+          </form>
+    </div>
+  </div>
+  <!-- ------------------All Books ----------------------- -->
+<div class="col-sm-8">
+<div class="container">
+  <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Title</th>
+          <th scope="col">Description</th>
+          <th scope="col">Author</th>
+          <th scope="col">Pages</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of bookData">
+          <th scope="row">{{book.id}}</th>
+          <td>{{book.title}}</td>
+          <td>{{book.description}}</td>
+          <td>{{book.author}}</td>
+          <td>{{book.totalPage}}</td>
+          <td><button type="button" class="btn btn-warning" 
+              (click)="edit(book.id)">Edit</button>
+              &nbsp;
+              <button type="button" class="btn btn-danger" 
+              (click)="delete(book.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+  </div>
+</div>
+<br>
+<br>
+
+
+</div>
